@@ -1,3 +1,4 @@
 Neet Code's 150 Questions
--  Contains Duplicate
+-   Contains Duplicate
 -   Valid Anagram
+-   Two Sum
