@@ -1,5 +1,4 @@
 import java.util.HashMap;
-import java.util.Scanner;
 
 public class CharacterFrequency {
     public static void main(String[] args) {
