@@ -10,7 +10,7 @@ static boolean hasDuplicate(int nums[]) {
 
     for (int i = 0; i <= nums.length - 1; i++) {
         if (hashMap.containsKey(nums[i])) {
-            return hashMap.containsKey(nums[i]);
+            return true;
         }
         hashMap.put(nums[i], null);
     }
@@ -19,7 +19,7 @@ static boolean hasDuplicate(int nums[]) {
 
 // Brutforce
 
-// public boolean hasDuplicate(int[] nums) {
+// static boolean hasDuplicate(int[] nums) {
 // for (int i = 0; i <= nums.length - 1; i++) {
 // for (int j = i + 1; j <= nums.length - 1; j++) {
 // if (nums[i] == nums[j]) {
