@@ -8,11 +8,14 @@ public class Anagram_Check { // TC - O(N)
     }
 
     static boolean isAnagram(String s, String t) {
-        if (s.length() != t.length()) {
+
+        int sSize = s.length();
+        int tSize = t.length();
+        if (sSize != tSize) {
             return false;
         }
         int[] charStorage = new int[26];
-        for (int i = 0; i < s.length(); i++) {
+        for (int i = 0; i < sSize; i++) {
             charStorage[s.charAt(i) - 'a']++;
             charStorage[t.charAt(i) - 'a']--;
         }
