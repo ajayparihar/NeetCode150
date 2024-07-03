@@ -8,11 +8,11 @@ public static void main(String[] args) {
 static boolean hasDuplicate(int nums[]) {
     HashMap<Integer, Void> hashMap = new HashMap<>();
 
-    for (int i = 0; i <= nums.length - 1; i++) {
-        if (hashMap.containsKey(nums[i])) {
+    for (int i : nums) {
+        if (hashMap.containsKey(i)) {
             return true;
         }
-        hashMap.put(nums[i], null);
+        hashMap.put(i, null);
     }
     return false;
 }
