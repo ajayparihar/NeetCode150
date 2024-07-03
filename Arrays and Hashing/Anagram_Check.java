@@ -60,14 +60,14 @@ public class Anagram_Check { // TC - O(N)
 
 // TC- O(nLogn)
 // static boolean isAnagram(String s, String t) {
-// if (s.length() == t.length()) {
-// char sArray[] = s.toCharArray();
-// Arrays.sort(sArray);
+// if(s.length() != t.length()) return false;
 
-// char tArray[] = t.toCharArray();
-// Arrays.sort(tArray);
+// char[] sArr = s.toCharArray();
+// Arrays.sort(sArr);
 
-// return Arrays.equals(sArray, tArray);
+// char[] tArr = t.toCharArray();
+// Arrays.sort(tArr);
+
+// return Arrays.equals(sArr, tArr);
 // }
-// return false;
 // }
