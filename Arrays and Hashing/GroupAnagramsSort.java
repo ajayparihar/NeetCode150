@@ -22,6 +22,5 @@ public class GroupAnagramsSort {
         }
 
         return new ArrayList<>(map.values());
-
     }
 }
