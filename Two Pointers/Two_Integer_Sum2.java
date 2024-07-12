@@ -11,24 +11,24 @@ public class Two_Integer_Sum2 {
     }
 
     static int[] twoSumTwo(int[] numbers, int target) {
-        int start = 0;
-        int end = numbers.length - 1;
+        int left = 0;
+        int right = numbers.length - 1;
 
         int num_a, num_b;
 
-        while (start < end) {
-            num_a = numbers[start];
-            num_b = numbers[end];
+        while (left < right) {
+            num_a = numbers[left];
+            num_b = numbers[right];
 
             if (num_a + num_b == target)
                 break;
 
             if (num_a + num_b < target) {
-                start++;
+                left++;
                 continue;
             }
-            end--;
+            right--;
         }
-        return new int[] { start + 1, end + 1 };
+        return new int[] { left + 1, right + 1 };
     }
 }
