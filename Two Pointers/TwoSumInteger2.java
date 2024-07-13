@@ -1,4 +1,4 @@
-public class TwoSumInteger {
+public class TwoSumInteger2 {
     public static void main(String[] args) {
         int[] arr = { 1, 2, 3, 4 };
         int target = 3;
