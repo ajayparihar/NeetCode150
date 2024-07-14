@@ -11,8 +11,9 @@ public class LongestSubstringWithoutDuplicates {
         int maxLength = 0, left = 0, right = 0;
 
         while (right < s.length()) {
-            if (!substringSet.contains(s.charAt(right))) {
-                substringSet.add(s.charAt(right));
+            char currChar = s.charAt(right);
+            if (!substringSet.contains(currChar)) {
+                substringSet.add(currChar);
                 maxLength = Math.max(maxLength, substringSet.size());
                 right++;
             } else {
