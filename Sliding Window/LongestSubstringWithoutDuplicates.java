@@ -7,20 +7,20 @@ public class LongestSubstringWithoutDuplicates {
     }
 
     static int lengthOfLongestsubstring(String s) {
-        List<Character> subStringL = new ArrayList<>();
-        int maxLength = 0;
+        Set<Character> substringSet = new HashSet<>();
+        int maxLength = 0, left = 0, right = 0;
 
-        for (int right = 0; right < s.length(); right++) {
-            if (subStringL.contains(s.charAt(right))) {
-                int index = subStringL.indexOf(s.charAt(right));
-                subStringL.remove(index);
-                if (index > 0)
-                    subStringL.subList(0, index).clear();
-
+        while (right < s.length()) {
+            if (!substringSet.contains(s.charAt(right))) {
+                substringSet.add(s.charAt(right));
+                maxLength = Math.max(maxLength, substringSet.size());
+                right++;
+            } else {
+                substringSet.remove(s.charAt(left));
+                left++;
             }
-            subStringL.add(s.charAt(right));
-            maxLength = Math.max(maxLength, subStringL.size());
         }
+
         return maxLength;
     }
 }
