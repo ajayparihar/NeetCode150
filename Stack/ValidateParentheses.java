@@ -9,28 +9,28 @@ public class ValidateParentheses {
     }
 
     static boolean isValid(String s) {
-        Stack<Character> pStack = new Stack<>();
+        Stack<Character> subStringStack = new Stack<>();
 
         for (char ch : s.toCharArray()) {
             switch (ch) {
                 case '(':
                 case '{':
                 case '[':
-                    pStack.push(ch);
+                    subStringStack.push(ch);
                     break;
 
                 case ')':
-                    if (pStack.isEmpty() || pStack.pop() != '(')
+                    if (subStringStack.isEmpty() || subStringStack.pop() != '(')
                         return false;
                     break;
 
                 case '}':
-                    if (pStack.isEmpty() || pStack.pop() != '{')
+                    if (subStringStack.isEmpty() || subStringStack.pop() != '{')
                         return false;
                     break;
 
                 case ']':
-                    if (pStack.isEmpty() || pStack.pop() != '[')
+                    if (subStringStack.isEmpty() || subStringStack.pop() != '[')
                         return false;
                     break;
 
@@ -38,6 +38,6 @@ public class ValidateParentheses {
                     return false;
             }
         }
-        return pStack.isEmpty();
+        return subStringStack.isEmpty();
     }
 }
