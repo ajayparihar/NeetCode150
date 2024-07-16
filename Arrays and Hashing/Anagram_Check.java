@@ -1,5 +1,5 @@
-import java.util.Arrays;
-import java.util.HashMap;
+// import java.util.Arrays;
+// import java.util.HashMap;
 
 public class Anagram_Check { // TC - O(N)
     public static void main(String[] args) {
