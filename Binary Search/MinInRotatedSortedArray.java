@@ -6,21 +6,18 @@ public class MinInRotatedSortedArray {
 
     static int findMin(int[] nums) {
 
-        int first = 0;
-        int last = nums.length - 1;
+        int left = 0;
+        int right = nums.length - 1;
 
-        while (first <= last) {
-            if (nums[first] <= nums[last])
-                return nums[first];
+        while (left < right) {
 
-            int mid = first + (last - first) / 2;
+            int mid = left + (right - left) / 2;
 
-            if (nums[mid] >= nums[first])
-                first = mid + 1;
-            else {
-                last = mid;
-            }
+            if (nums[mid] > nums[right])
+                left = mid + 1;
+            else
+                right = mid;
         }
-        return 0;
+        return nums[left];
     }
 }
