@@ -7,20 +7,16 @@ public class GroupAnagramsSort {
     }
 
     static List<List<String>> groupAnagrams(String[] strs) {
-        Map<String, List<String>> map = new HashMap<>();
+        Map<String, List<String>> anagramsMap = new HashMap<>();
 
         for (String word : strs) {
-            char[] chars = word.toCharArray();
-            Arrays.sort(chars);
-            String sortedWord = new String(chars);
+            char[] charArray = word.toCharArray();
+            Arrays.sort(charArray);
+            String sortedWord = new String(charArray);
 
-            if (!map.containsKey(sortedWord)) {
-                map.put(sortedWord, new ArrayList<>());
-            }
-
-            map.get(sortedWord).add(word);
+            anagramsMap.putIfAbsent(sortedWord, new ArrayList<>());
+            anagramsMap.get(sortedWord).add(word);
         }
-
-        return new ArrayList<>(map.values());
+        return new ArrayList<>(anagramsMap.values());
     }
 }
