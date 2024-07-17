@@ -7,28 +7,25 @@ public class GroupAnagrams {
     }
 
     static List<List<String>> groupAnagrams(String[] strs) {
-        Map<String, List<String>> map = new HashMap<>();
+        Map<String, List<String>> anagramsMap = new HashMap<>();
 
-        for (String s : strs) {
-            int[] count = new int[26];
+        for (String word : strs) {
+            int[] charCount = new int[26];
 
-            for (char c : s.toCharArray()) {
-                count[c - 'a']++;
+            for (char c : word.toCharArray()) {
+                charCount[c - 'a']++;
             }
 
-            StringBuilder sb = new StringBuilder();
-
-            for (int i = 0; i < 26; i++) {
-                sb.append("#");
-                sb.append(count[i]);
+            StringBuilder keyBuilder = new StringBuilder();
+            for (int count : charCount) {
+                keyBuilder.append("#").append(count);
             }
 
-            String key = sb.toString();
-            if (!map.containsKey(key)) {
-                map.put(key, new ArrayList<>());
-            }
-            map.get(key).add(s);
+            String key = keyBuilder.toString();
+
+            anagramsMap.putIfAbsent(key, new ArrayList<>());
+            anagramsMap.get(key).add(word);
         }
-        return new ArrayList<>(map.values());
+        return new ArrayList<>(anagramsMap.values());
     }
 }
