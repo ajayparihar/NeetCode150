@@ -17,12 +17,12 @@ public class ReverseLinkedList_Recursive {
         return reverse(head, null);
     }
 
-    static LinkedListHelper.ListNode reverse(LinkedListHelper.ListNode node, LinkedListHelper.ListNode pre) {
-        if (node == null)
-            return pre;
+    static LinkedListHelper.ListNode reverse(LinkedListHelper.ListNode current, LinkedListHelper.ListNode previous) {
+        if (current == null)
+            return previous;
 
-        LinkedListHelper.ListNode temp = node.next;
-        node.next = pre;
-        return reverse(temp, node);
+        LinkedListHelper.ListNode temp = current.next;
+        current.next = previous;
+        return reverse(temp, current);
     }
 }
