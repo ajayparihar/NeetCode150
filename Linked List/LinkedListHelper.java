@@ -1,4 +1,3 @@
-// LinkedListHelper.java
 public class LinkedListHelper {
     // Define the ListNode class
     public static class ListNode {
