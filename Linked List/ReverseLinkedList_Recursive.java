@@ -1,5 +1,3 @@
-import java.lang.classfile.components.ClassPrinter.ListNode;
-
 public class ReverseLinkedList_Recursive {
     public static void main(String[] args) {
 
