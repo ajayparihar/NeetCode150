@@ -12,7 +12,8 @@ public class BuyAndSellStocks {
 
         while (right < prices.length) {
             if (prices[left] < prices[right]) {
-                maxProfit = Math.max(maxProfit, prices[right] - prices[left]);
+                int currentPrice = prices[right] - prices[left];
+                maxProfit = Math.max(maxProfit, currentPrice);
             } else {
                 left = right;
             }

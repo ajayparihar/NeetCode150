@@ -1,4 +1,4 @@
-public class BuyAndSellStocks_Brute_Force {
+public class BuyAndSellStocks_Bruteforce {
     public static void main(String[] args) {
         int[] stock_prices = { 10, 1, 5, 6, 7, 1 };
 
@@ -12,7 +12,8 @@ public class BuyAndSellStocks_Brute_Force {
 
         for (int i = 0; i < size; i++) {
             for (int j = i; j < size; j++) {
-                profit = Math.max(profit, prices[j] - prices[i]);
+                int currentPrice = prices[j] - prices[i];
+                profit = Math.max(profit, currentPrice);
             }
         }
         return profit;
