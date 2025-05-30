@@ -2,70 +2,61 @@
 // Determines if two strings are anagrams of each other
 
 /**
- * The ValidAnagram class determines if two strings are anagrams of each other.
- * Two strings are considered anagrams if they have the same characters with the same frequencies.
- * For example, "anagram" and "nagaram" are anagrams.
+ * Checks if two strings are anagrams of each other.
+ * An anagram is when two strings have the same letters in different orders.
+ * Example: "listen" and "silent" are anagrams.
+ * 
+ * Time Complexity: O(n) where n is length of strings
+ * - We need to look at each character once
+ * 
+ * Space Complexity: O(1) constant space
+ * - We use a fixed size array of 26 letters
+ * 
+ * How it works:
+ * 1. First checks if strings are valid and same length
+ * 2. Uses an array to count how many times each letter appears
+ * 3. For first string: adds to count
+ * 4. For second string: subtracts from count
+ * 5. If counts are all zero at end, they're anagrams
  */
 public class ValidAnagram {
 
     /**
-     * Determines if two strings are anagrams of each other.
-     * Uses a character frequency counting approach with O(n) time complexity.
-     *
-     * @param s First input string
-     * @param t Second input string
-     * @return true if s and t are anagrams, false otherwise
+     * Checks if two strings are anagrams of each other.
+     * Works only for lowercase English letters (a to z).
      */
     public boolean isAnagram(String s, String t) {
-        // Input validation: check for null and length equality
+        // Check if strings are valid (not null and same length)
         if (s == null || t == null || s.length() != t.length()) {
             return false;
         }
 
-        // Array to count character frequencies (assuming lowercase a-z)
-        int[] charCount = new int[26];
+        // Array to keep count of each letter (a=0, b=1, ..., z=25)
+        int[] letterCount = new int[26];
 
-        // Count frequencies: increment for s, decrement for t
-        // If strings are anagrams, all counts should end up as 0
+        // Count letters in both strings at once
         for (int i = 0; i < s.length(); i++) {
-            charCount[s.charAt(i) - 'a']++;
-            charCount[t.charAt(i) - 'a']--;
+            // Add 1 for letters in first string
+            letterCount[s.charAt(i) - 'a']++;
+            // Subtract 1 for letters in second string
+            letterCount[t.charAt(i) - 'a']--;
         }
 
-        // Verify all counts are zero
-        for (int count : charCount) {
-            if (count != 0) {
-                return false;
-            }
+        // Check if all counts are zero
+        // If any count is not zero, strings are not anagrams
+        for (int count : letterCount) {
+            if (count != 0) return false;
         }
         
+        // All counts are zero, so they are anagrams
         return true;
     }
 
-    /**
-     * Main method to test the ValidAnagram solution with example cases.
-     */
     public static void main(String[] args) {
         ValidAnagram solution = new ValidAnagram();
         
-        // Test case 1: Valid anagrams
-        String s1 = "anagram";
-        String t1 = "nagaram";
-        System.out.println("Test case 1: " + solution.isAnagram(s1, t1));  // Expected: true
-        
-        // Test case 2: Not anagrams
-        String s2 = "rat";
-        String t2 = "car";
-        System.out.println("Test case 2: " + solution.isAnagram(s2, t2));  // Expected: false
-        
-        // Test case 3: Same length but not anagrams
-        String s3 = "hello";
-        String t3 = "world";
-        System.out.println("Test case 3: " + solution.isAnagram(s3, t3));  // Expected: false
-        
-        // Test case 4: Empty strings (are anagrams)
-        String s4 = "";
-        String t4 = "";
-        System.out.println("Test case 4: " + solution.isAnagram(s4, t4));  // Expected: true
+        // Test with a simple anagram
+        System.out.println("Is 'listen' and 'silent' anagram? " + 
+            solution.isAnagram("listen", "silent"));  // should print: true
     }
 }
