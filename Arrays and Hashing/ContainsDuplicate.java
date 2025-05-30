@@ -1,31 +1,36 @@
-import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
-public static void main(String[] args) {
-    int nums[] = { 1, 2, 3, 4, 5, 5 };
-    System.out.println(hasDuplicate(nums));
-}
+    /*
+     * The ContainsDuplicate class provides a method to check if an array contains any duplicate elements.
+     */
 
-static boolean hasDuplicate(int nums[]) {
-    HashMap<Integer, Void> hashMap = new HashMap<>();
+    public class ContainsDuplicate {
 
-    for (int i : nums) {
-        if (hashMap.containsKey(i)) {
-            return true;
+        /**
+         * Checks if the given array contains any duplicate integers.
+         *
+         * @param nums the array of integers to check
+         * @return true if there is at least one duplicate, false otherwise
+         */
+        public boolean containsDuplicate(int[] nums) {
+            // Create a HashSet to store unique numbers
+            Set<Integer> uniqueNums = new HashSet<>();
+            int sizeNums = nums.length;
+
+            // Add each number to the set
+            for (int num : nums) {
+                uniqueNums.add(num);
+            }
+
+            // If the size of the set is less than the array, duplicates exist
+            return sizeNums != uniqueNums.size();
         }
-        hashMap.put(i, null);
+
+        public static void main(String[] args) {
+            ContainsDuplicate solution = new ContainsDuplicate();
+            int[] nums = {1, 2, 3, 1};
+            boolean result = solution.containsDuplicate(nums);
+            System.out.println("Contains duplicate: " + result);
+        }
     }
-    return false;
-}
-
-// Brutforce
-
-// static boolean hasDuplicate(int[] nums) {
-// for (int i = 0; i <= nums.length - 1; i++) {
-// for (int j = i + 1; j <= nums.length - 1; j++) {
-// if (nums[i] == nums[j]) {
-// return true;
-// }
-// }
-// }
-// return false;
-// }

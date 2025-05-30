@@ -1,0 +1,21 @@
+# Compiled class files
+*.class
+
+# VSCode directory
+.vscode/
+
+# Log files
+*.log
+
+# Package Files
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# virtual machine crash logs
+hs_err_pid*
+replay_pid*
