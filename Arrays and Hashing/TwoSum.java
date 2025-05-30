@@ -3,57 +3,59 @@ import java.util.Map;
 import java.util.Arrays;
 
 /**
- * Finds two numbers in an array that add up to a target sum.
- * Example: In array [2,7,11,15] with target 9, returns [0,1] because 2+7=9
+ * Two Sum Problem
  * 
- * Time Complexity: O(n) where n is array length
- * - We only need to go through the array once
- * - HashMap operations (put/get) take O(1) time
+ * Problem: Given an array of integers nums and an integer target, return
+ * indices of the two numbers
+ * such that they add up to target.
  * 
- * Space Complexity: O(n) where n is array length
- * - We need to store numbers in HashMap
- * - In worst case, we store almost all numbers
+ * Example:
+ * Input: nums = [2,7,11,15], target = 9
+ * Output: [0,1]
+ * 
+ * Time Complexity: O(n)
+ * - We traverse the array once
+ * - HashMap operations are O(1)
+ * 
+ * Space Complexity: O(n)
+ * - We use a HashMap to store numbers and their indices
  * 
  * How it works:
- * 1. Uses a HashMap to remember numbers we've seen
- * 2. For each number, calculates what other number we need (complement)
- * 3. Checks if we've seen that needed number before
- * 4. If found, returns positions of both numbers
- * 5. If not found, remembers current number and continues
+ * 1. Use HashMap to store numbers we've seen
+ * 2. For each number, check if (target - number) exists in HashMap
+ * 3. If found, return both indices
+ * 4. If not found, store current number and continue
  */
 public class TwoSum {
-    
-    /**
-     * Returns positions of two numbers that add up to target.
-     * Assumes there is exactly one solution in the array.
-     */
     public int[] twoSum(int[] nums, int target) {
-        // Map to store numbers we've seen and their positions
+        // HashMap to store numbers we've seen and their indices
         Map<Integer, Integer> seenNumbers = new HashMap<>();
-        
-        // Check each number in the array
-        for(int i = 0; i < nums.length; i++) {
-            // Calculate the number we need to find
+
+        // Iterate through each number in the array
+        for (int i = 0; i < nums.length; i++) {
+            // Calculate the complement we need to find
             int complement = target - nums[i];
-            
-            // If we've seen the number we need, we found a solution
-            if(seenNumbers.containsKey(complement)) {
-                return new int[]{seenNumbers.get(complement), i};
+
+            // If we've seen the complement before, we found our solution
+            if (seenNumbers.containsKey(complement)) {
+                return new int[] { seenNumbers.get(complement), i };
             }
-            
-            // Remember current number and its position
+
+            // Store current number and its index for future lookups
             seenNumbers.put(nums[i], i);
         }
-        
-        // No solution found (shouldn't happen per problem constraints)
-        return new int[]{-1, -1};
+
+        return new int[] { -1, -1 };
     }
 
     public static void main(String[] args) {
         TwoSum solution = new TwoSum();
-        
-        // Test with array [2,7,11,15] and target 9
-        System.out.println("Positions of numbers adding to 9 in [2,7,11,15]: " + 
-            Arrays.toString(solution.twoSum(new int[]{2,7,11,15}, 9)));  // should print: [0, 1]
+
+        // Test case
+        int[] nums = { 2, 7, 11, 15 };
+        int target = 9;
+        System.out.println("Positions of numbers adding to " + target +
+                " in " + Arrays.toString(nums) + ": " +
+                Arrays.toString(solution.twoSum(nums, target))); // Expected: [0, 1]
     }
 }

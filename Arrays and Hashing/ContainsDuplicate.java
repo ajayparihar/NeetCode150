@@ -1,58 +1,58 @@
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Arrays;
 
 /**
- * Checks if an array has any number appearing more than once.
- * Example: [1,2,3,1] has duplicate (1 appears twice)
+ * Contains Duplicate Problem
  * 
- * Time Complexity: O(n) where n is array length
- * - We need to check each number exactly once
- * - HashSet operations (add/contains) take O(1) time
+ * Problem: Given an integer array nums, return true if any value appears at
+ * least twice in the array,
+ * and return false if every element is distinct.
  * 
- * Space Complexity: O(n) where n is array length
- * - In worst case, we store all numbers in HashSet
- * - Example: [1,2,3,4] all numbers are different
+ * Example:
+ * Input: nums = [1,2,3,1]
+ * Output: true
+ * 
+ * Time Complexity: O(n)
+ * - We traverse the array once
+ * - HashSet operations are O(1)
+ * 
+ * Space Complexity: O(n)
+ * - We use a HashSet to store unique numbers
  * 
  * How it works:
- * 1. First checks if array is valid (not null or too small)
- * 2. Uses a HashSet to remember numbers we've seen
- * 3. For each number, checks if we've seen it before
- * 4. If we see a number twice, we found a duplicate
- * 5. If we finish checking all numbers, no duplicates exist
+ * 1. Use HashSet to store numbers we've seen
+ * 2. For each number, try to add it to HashSet
+ * 3. If add fails, number is duplicate
+ * 4. If no duplicates found, return false
  */
 public class ContainsDuplicate {
-
-    /**
-     * Returns true if any number appears at least twice in the array.
-     * Works for both positive and negative numbers.
-     */
     public boolean containsDuplicate(int[] nums) {
-        // Check if array is valid (not null and has at least 2 numbers)
+        // Input validation
         if (nums == null || nums.length < 2) {
             return false;
         }
 
-        // Set to store numbers we've seen
+        // HashSet to store unique numbers we've seen
         Set<Integer> seenNumbers = new HashSet<>();
 
-        // Check each number in the array
+        // Iterate through each number in the array
         for (int num : nums) {
-            // If we've seen this number before, it's a duplicate
+            // HashSet.add() returns false if element already exists
             if (!seenNumbers.add(num)) {
-                return true;
+                return true; // Found a duplicate
             }
         }
-        
-        // No duplicates found after checking all numbers
+
         return false;
     }
 
     public static void main(String[] args) {
         ContainsDuplicate solution = new ContainsDuplicate();
-        
-        // Test with a simple case
-        int[] nums = {1, 2, 3, 1};  // Array with duplicate 1
-        System.out.println("Does array have duplicates? " + 
-            solution.containsDuplicate(nums));  // should print: true
+
+        // Test case
+        int[] nums = { 1, 2, 3, 1 };
+        System.out.println("Does array " + Arrays.toString(nums) +
+                " have duplicates? " + solution.containsDuplicate(nums)); // Expected: true
     }
 }
